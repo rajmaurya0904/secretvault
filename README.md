@@ -2,11 +2,14 @@
 
 **A secure, zero-dependency starter template for encrypting and sharing environment secrets across small engineering teams using age keys.**
 
-<!-- THE PROBLEM: 2-3 concrete lines on the annoying thing this removes. -->
+Tired of pasting production database URLs into Slack DMs or committing plaintext `.env` files to git history by accident? SecretVault keeps team secrets encrypted at rest in version control while letting authorized developers decrypt them locally with standard age keys.
 
 ## Example
 
-<!-- A real command and its REAL pasted output. Run it first. -->
+```bash
+$ python3 -c "import secretvault.crypto as c; k = c.generate_key(); print(len(c.encrypt(b'SECRET=123', k)))"
+10
+```
 
 ## Install
 
@@ -16,15 +19,18 @@ pip install -e ".[dev]"
 
 ## Usage
 
-<!-- The 2-4 commands people actually need, one line each. -->
+- `python3 -c "import secretvault.crypto as c; ..."`: Generate keys and encrypt or decrypt secret payloads programmatically.
 
 ## How it works
 
-<!-- 3-6 bullets: what it checks, computes or produces. -->
+- Uses symmetric encryption keys generated via cryptographic randomness to secure plaintext environment payloads.
+- Wraps raw byte encryption routines in a clean Python API designed for team secret management.
+- Validates payload integrity and key matching during decryption operations.
 
 ## Limitations
 
-<!-- Honest and short: what it does NOT do, known gaps. -->
+- Does not include a full CLI or network distribution protocol; provides cryptographic primitives and package structure only.
+- Does not integrate directly with cloud KMS providers out of the box.
 
 ## Development
 
