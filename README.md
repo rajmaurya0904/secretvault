@@ -29,8 +29,8 @@ pip install -e ".[dev]"
 
 ## Limitations
 
-- Does not include a full CLI or network distribution protocol; provides cryptographic primitives and package structure only.
-- Does not integrate directly with cloud KMS providers out of the box.
+- No built-in key rotation mechanism; key management and distribution must be handled externally.
+- Relies on external `age` binary or compatible encryption tooling for underlying operations.
 
 ## Development
 
